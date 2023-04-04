@@ -3,7 +3,13 @@
 <head> 
 <title>Lviv Opera Theatre</title> 
 <link rel="stylesheet" href="../styles.css">
-<body> 
+<body>
+    <div class="date", id="date">
+        <script>
+            date = new Date().toLocaleDateString();
+            document.write(date);
+            </script>
+    </div>  
 <h1>Choose from DB</h1>
 <form action="form2.php" method="post"> 
 <b>Enter student university<b><br>

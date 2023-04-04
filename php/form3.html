@@ -2,7 +2,13 @@
 <head> 
 <title>Виборка даних</title> 
 <link rel="stylesheet" href="../styles.css">
-<body> 
+<body>
+    <div class="date", id="date">
+        <script>
+            date = new Date().toLocaleDateString();
+            document.write(date);
+            </script>
+    </div>  
 <h1>Delete record</h1>
 <form action="form3.php" method="post"> 
 <b>Enter  student name<b><br>
