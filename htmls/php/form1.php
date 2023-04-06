@@ -13,14 +13,25 @@ $conn= new mysqli($hostname,$username,$password,$dbname);
     die ("Connection failed: "). mysqli_connect_error();
  }
  echo "Connected successfully"; 
-/* Вибір БД */ 
-$sql="SELECT * FROM $usertable";
-if($conn->query($sql)===TRUE){
-    echo "Table $usertable is used already";
+$query1 = "INSERT INTO $usertable VALUES
+ ('$user_name','$phone','$hobby','$university','$course')";
+$result1 = MYSQLI_QUERY($conn,$query1);
+
+
+$sql="SELECT $user_name,$phone,$hobby,$university, $course FROM $usertable";
+$result2 = $conn->query($sql);
+
+// Generate an HTML table using PHP
+if ($result2->num_rows > 0) {
+  echo "<table>";
+  // output data of each row
+  while($row = $result2->fetch_assoc()) {
+    echo "<tr><td>".$row["user_name"]."</td><td>".$row["phone"]."</td><td>".$row["hobby"]."</td><td>".$row["university"]."</td><td>".$row["course"]."</td></tr>";
+  }
+  echo "</table>";
+} else {
+  echo "0 results";
 }
-else{
-    echo "Error using table :". $conn->error;
-}
-mysqli_close($conn)
+mysqli_close($conn);
 ?>
 
