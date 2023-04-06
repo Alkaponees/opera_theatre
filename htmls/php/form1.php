@@ -24,7 +24,11 @@ $course=$_POST["user_name"];
 
 $query1 = "INSERT INTO $usertable VALUES
  ('$user_name','$phone','$hobby','$university','$course')";
-$result1 = MYSQLI_QUERY($conn,$query1);
+if ($conn->query($quer) === TRUE) {
+    echo "New record created successfully";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
 
 
 $sql="SELECT $user_name,$phone,$hobby,$university, $course FROM $usertable";
