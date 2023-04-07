@@ -18,7 +18,7 @@ $insitute=$_POST["university"];
 $gender=$_POST["gender"];
 
 
-$sql = "SELECT  FROM $usertable WHERE institute='$insitute' AND gender='$gender';";
+$sql = "SELECT * FROM $usertable WHERE institute='$insitute' AND gender='$gender';";
 
 // Execute the query and check for errors
 $result = $conn->query($sql);
@@ -34,5 +34,5 @@ if ($result->num_rows > 0) {
   }
 // Close the MySQL database connection
 mysqli_close($conn);
-
+print '<a href="../../index.html">Back to main menu</a>';
 ?>

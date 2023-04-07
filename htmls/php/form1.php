@@ -45,5 +45,6 @@ if ($result2->num_rows > 0) {
   echo "0 results";
 }
 mysqli_close($conn);
+print '<a class="btn" href="../../index.html">Back to main menu</a>';
 ?>
 
