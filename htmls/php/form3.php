@@ -15,35 +15,27 @@ $conn= new mysqli($hostname,$username,$password,$dbname);
 echo "Connected successfully";
 
 $user_name=$_POST["user_name"];
-$phone=$_POST["phone"];
 $institute=$_POST["institute"];
-$gender=$_POST["gender"];
-$course=$_POST["course"];
 
+$quer="DELETE FROM $usertable WHERE name='$user_name' AND institute ='$institute';";
 
-$quer = "INSERT INTO $usertable (name,phone,institute,course,gender) VALUES
- ('$user_name','$phone','$institute','$course','$gender');";
 if ($conn->query($quer) === TRUE) {
-    echo "New record created successfully";
+    echo " Record deleted successfully";
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
-
 $sql="SELECT * FROM $usertable ;";
 $result2 = $conn->query($sql);
-
-// Generate an HTML table using PHP
+  
+  // Generate an HTML table using PHP
 if ($result2->num_rows > 0) {
-  echo "<table>";
-  // output data of each row
-  while($row = $result2->fetch_assoc()) {
-    echo "<tr><td>".$row["name"]."</td><td>".$row["phone"]."</td><td>".$row["institute"]."</td><td>".$row["course"]."</td><td>".$row["gender"]."</td></tr>";
-  }
-  echo "</table>";
-} else {
-  echo "0 results";
+    echo "<table>";
+    // output data of each row
+    while($row = $result2->fetch_assoc()) {
+      echo "<tr><td>".$row["name"]."</td><td>".$row["phone"]."</td><td>".$row["institute"]."</td><td>".$row["course"]."</td><td>".$row["gender"]."</td></tr>";
+    }
+    echo "</table>";
+  } else {
+    echo "0 results";
 }
-mysqli_close($conn);
-?>
-

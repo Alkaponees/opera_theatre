@@ -6,7 +6,7 @@ $password="vysotskyi";
 $dbname="vysotskyi_students";
 /*Ім'я таблиці в базі даних*/
 /* Створити з'єднання */ 
-$usertable = "Students";
+$usertable = "students";
 $conn= new mysqli($hostname,$username,$password,$dbname);
  if(!$conn){
     die ("Connection failed: "). mysqli_connect_error();
@@ -18,7 +18,7 @@ $insitute=$_POST["university"];
 $gender=$_POST["gender"];
 
 
-$sql = "SELECT  FROM $usertable WHERE institute='$insitute' AND gender='$gender'";
+$sql = "SELECT  FROM $usertable WHERE institute='$insitute' AND gender='$gender';";
 
 // Execute the query and check for errors
 $result = $conn->query($sql);
