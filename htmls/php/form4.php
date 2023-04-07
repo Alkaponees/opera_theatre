@@ -36,22 +36,24 @@ if ($result->num_rows > 0) {
 $quer2="DELETE FROM $usertable WHERE name='$user_name' AND institute ='$institute';";
 if ($conn->query($quer2) === TRUE) {
     echo " Record deleted successfully";
+    
+    print '<form method=post action="form1.php">'; 
+    print'<br><b>Enter student name:</b>'; 
+    print'<br><input id ="user_name" name="user_name" value="" size=30>';
+    print'<br><b>Enter student phone number:</b>'; 
+    print'<br><input id ="phone" name="phone" value="" size=30>';
+    print'<br><br><b>Enter student institute</b>';
+    print'<br><input id ="institute" name="institute" value="" size=50>'; 
+    print'<br><br><b>Enter student course</b> ';
+    print'<br><input id ="course" name="course" value="" size=50>' ;
+    print'<br><br><b>Enter student current gender</b> ';
+    print'<br><input id ="gender" name="gender" value="" size=20>' ;
+    print'<br><br><input type="submit" value="Register">' ;
+    print'</form>';
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
     print '<a class="btn" href="../../index.html">Back to main menu</a>';
   }
 
-print '<form method=post action="form5.php">'; 
-print'<br><b>Enter student name:</b>'; 
-print'<br><input id ="user_name" name="user_name" value="" size=30>';
-print'<br><b>Enter student phone number:</b>'; 
-print'<br><input id ="phone" name="phone" value="" size=30>';
-print'<br><br><b>Enter student institute</b>';
-print'<br><input id ="institute" name="institute" value="" size=50>'; 
-print'<br><br><b>Enter student course</b> ';
-print'<br><input id ="course" name="course" value="" size=50>' ;
-print'<br><br><b>Enter student current gender</b> ';
-print'<br><input id ="gender" name="gender" value="" size=20>' ;
-print'<br><br><input type="submit" value="Register">' ;
-print'</form>'
+
 ?>
