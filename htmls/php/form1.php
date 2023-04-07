@@ -15,15 +15,14 @@ $conn= new mysqli($hostname,$username,$password,$dbname);
 echo "Connected successfully";
 
 $user_name=$_POST["user_name"];
-$phone=$_POST["user_name"];
-$hobby=$_POST["user_name"];
-$university=$_POST["user_name"];
-$course=$_POST["user_name"];
+$phone=$_POST["phone"];
+$institute=$_POST["institute"];
+$gender=$_POST["gender"];
+$course=$_POST["course"];
 
 
-
-$query1 = "INSERT INTO $usertable VALUES
- ('$user_name','$phone','$hobby','$university','$course')";
+$query1 = "INSERT INTO $usertable (name,phone,institute,course,gender) VALUES
+ ('$user_name','$phone','$institute','$course','$gender')";
 if ($conn->query($quer) === TRUE) {
     echo "New record created successfully";
   } else {
@@ -31,7 +30,7 @@ if ($conn->query($quer) === TRUE) {
   }
 
 
-$sql="SELECT $user_name,$phone,$hobby,$university, $course FROM $usertable";
+$sql="SELECT * FROM $usertable";
 $result2 = $conn->query($sql);
 
 // Generate an HTML table using PHP
@@ -39,7 +38,7 @@ if ($result2->num_rows > 0) {
   echo "<table>";
   // output data of each row
   while($row = $result2->fetch_assoc()) {
-    echo "<tr><td>".$row["user_name"]."</td><td>".$row["phone"]."</td><td>".$row["hobby"]."</td><td>".$row["university"]."</td><td>".$row["course"]."</td></tr>";
+    echo "<tr><td>".$row["user_name"]."</td><td>".$row["phone"]."</td><td>".$row["institute"]."</td><td>".$row["course"]."</td><td>".$row["gender"]."</td></tr>";
   }
   echo "</table>";
 } else {
